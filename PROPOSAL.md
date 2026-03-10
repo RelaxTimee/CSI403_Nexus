@@ -84,7 +84,7 @@ https://developers.google.com/sheets/api
 ---
 
 ## GitHub Repository
-
+https://github.com/RelaxTimee/CSI403_Nexus.git
 
 ---
 
