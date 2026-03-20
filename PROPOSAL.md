@@ -1,7 +1,7 @@
 # Project Proposal
 
 ## Project Name
-**Nexus Academy AI — The Task-Life Harmonizer**
+**Nexus AI — The Task-Life Harmonizer**
 
 ---
 
