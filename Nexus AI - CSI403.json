@@ -3,7 +3,9 @@
   "nodes": [
     {
       "parameters": {
-        "path": "f785e201-5998-4cca-bd9f-d9e69ca511e2",
+        "httpMethod": "POST",
+        "path": "nexus",
+        "responseMode": "responseNode",
         "options": {}
       },
       "type": "n8n-nodes-base.webhook",
@@ -18,6 +20,29 @@
     },
     {
       "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "efb338bb-7e7b-47c4-83af-f2ed914327ec",
+              "name": "userId",
+              "value": "={{ $json.body.events[0].source.userId }}",
+              "type": "string"
+            },
+            {
+              "id": "e9a19d31-1357-435f-a558-17a31321b1ff",
+              "name": "replyToken",
+              "value": "={{ $json.body.events[0].replyToken }}",
+              "type": "string"
+            },
+            {
+              "id": "67c9b279-4bb2-4136-aa84-dcbb7f920a02",
+              "name": "messageText",
+              "value": "={{ $json.body.events[0].message.text }}",
+              "type": "string"
+            }
+          ]
+        },
+        "includeOtherFields": true,
         "options": {}
       },
       "type": "n8n-nodes-base.set",
@@ -31,6 +56,11 @@
     },
     {
       "parameters": {
+        "method": "POST",
+        "url": "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=YOUR_GEMINI_API_KEY",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"contents\": [{\n    \"parts\": [{\n      \"text\": \"วิเคราะห์ข้อความต่อไปนี้และตอบเป็น JSON เท่านั้น ห้ามมี text อื่น:\\nข้อความ: {{ $json.messageText }}\\n\\nรูปแบบ:\\n{\\\"intent\\\": \\\"add_task|complete_task|view_tasks|unknown\\\", \\\"task_name\\\": \\\"\\\", \\\"subject\\\": \\\"\\\", \\\"deadline\\\": \\\"YYYY-MM-DD\\\", \\\"task_type\\\": \\\"assignment|project|exam|other\\\"}\"\n    }]\n  }],\n  \"generationConfig\": { \"temperature\": 0.1 }\n}",
         "options": {}
       },
       "type": "n8n-nodes-base.httpRequest",
@@ -44,7 +74,7 @@
     },
     {
       "parameters": {
-        "jsCode": "// Loop over input items and add a new field called 'myNewField' to the JSON of each one\nfor (const item of $input.all()) {\n  item.json.myNewField = 1;\n}\n\nreturn $input.all();"
+        "jsCode": "try {\n  const raw = $input.first().json.candidates[0].content.parts[0].text;\n  const clean = raw.replace(/```json|```/g, '').trim();\n  const parsed = JSON.parse(clean);\n\n  parsed.task_id = 'task_' + Date.now();\n  parsed.user_id = $('Edit Fields').first().json.userId;\n  parsed.reply_token = $('Edit Fields').first().json.replyToken;\n  parsed.created_at = new Date().toISOString();\n  parsed.status = 'pending';\n  parsed.notified_24h = 'false';\n\n  return [{ json: parsed }];\n} catch (e) {\n  return [{ json: {\n    intent: 'unknown',\n    task_id: 'task_' + Date.now(),\n    user_id: $('Edit Fields').first().json.userId,\n    reply_token: $('Edit Fields').first().json.replyToken,\n    error: e.message\n  }}];\n}"
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
@@ -69,8 +99,8 @@
                 },
                 "conditions": [
                   {
-                    "leftValue": "",
-                    "rightValue": "",
+                    "leftValue": "={{ $json.intent }}",
+                    "rightValue": "add_task",
                     "operator": {
                       "type": "string",
                       "operation": "equals"
@@ -79,7 +109,8 @@
                   }
                 ],
                 "combinator": "and"
-              }
+              },
+              "renameOutput": "={{ false }}"
             },
             {
               "conditions": {
@@ -92,8 +123,8 @@
                 "conditions": [
                   {
                     "id": "40e64871-0569-4663-a152-3b75a458446f",
-                    "leftValue": "",
-                    "rightValue": "",
+                    "leftValue": "={{ $json.intent }}",
+                    "rightValue": "complete_task",
                     "operator": {
                       "type": "string",
                       "operation": "equals",
@@ -102,7 +133,8 @@
                   }
                 ],
                 "combinator": "and"
-              }
+              },
+              "renameOutput": "={{ false }}"
             },
             {
               "conditions": {
@@ -115,8 +147,8 @@
                 "conditions": [
                   {
                     "id": "129bc85e-4892-48e2-bc3d-fe1070c03a3b",
-                    "leftValue": "",
-                    "rightValue": "",
+                    "leftValue": "={{ $json.intent }}",
+                    "rightValue": "view_tasks",
                     "operator": {
                       "type": "string",
                       "operation": "equals",
@@ -125,7 +157,8 @@
                   }
                 ],
                 "combinator": "and"
-              }
+              },
+              "renameOutput": "={{ false }}"
             },
             {
               "conditions": {
@@ -225,21 +258,38 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        800,
-        80
+        848,
+        16
       ],
       "id": "54a2702e-52f3-4b53-a366-4d458aa181cb",
       "name": "Get row(s) in sheet"
     },
     {
       "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "7b72505b-56b4-43a1-9eef-5ca6f8639c95",
+              "name": "replyMessage",
+              "value": "ขออภัยครับ ไม่เข้าใจคำสั่ง กรุณาลองใหม่อีกครั้ง เช่น \"กำหนดส่งงาน Report CSI403 วันที่ 20 มี.ค.\"",
+              "type": "string"
+            },
+            {
+              "id": "86a91256-b79a-464d-9f5f-79311f64528a",
+              "name": "reply_token",
+              "value": "={{ $('Edit Fields').first().json.replyToken }}",
+              "type": "string"
+            }
+          ]
+        },
+        "includeOtherFields": true,
         "options": {}
       },
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
         1024,
-        272
+        240
       ],
       "id": "bcd6d14b-59ea-4513-9106-1deeae959a7b",
       "name": "Edit Fields1"
@@ -677,7 +727,7 @@
     "binaryMode": "separate",
     "availableInMCP": false
   },
-  "versionId": "f3a91193-c662-4bbd-b985-bbdc629bccb9",
+  "versionId": "df7d72a0-d95d-4d95-9fa5-a2ad9dbbf130",
   "meta": {
     "instanceId": "c6ea936472e83d981fde2e1f0a8b6d61fe0dc6b54f3a7d1b0fae6f08b4334cee"
   },
