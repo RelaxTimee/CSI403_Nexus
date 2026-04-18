@@ -114,8 +114,8 @@ flowchart TD
 | ประเภท | เวลา | ช่องทาง |
 |---|---|---|
 | Morning Brief | ทุกวัน 07:00 น. | LINE Push |
-| แจ้งเตือนก่อน 1 ชั่วโมง | ทุก 15 นาที (real-time) | LINE Push |
-| แจ้งเตือนก่อน 15 นาที | ทุก 15 นาที (real-time) | LINE Push |
+| แจ้งเตือนก่อน 1 ชั่วโมง | ก่อน Deadline 1 ชั่วโมง | LINE Push |
+| แจ้งเตือนก่อน 15 นาที | ก่อน Deadline 15 นาที | LINE Push |
 
 > งานที่ไม่มีเวลา (`has_time = false`) จะใช้เวลา 07:00 น. เป็น default สำหรับการคำนวณ deadline
 
