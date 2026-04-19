@@ -1,0 +1,2873 @@
+{
+  "name": "Nexus_Final",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "nexusopza",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -5760,
+        14336
+      ],
+      "id": "a5b0d02f-76b2-4989-b29b-76217445c6f4",
+      "name": "Webhook1",
+      "webhookId": "f785e201-5998-4cca-bd9f-d9e69ca511e2"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1lBLT-m-s8j8RI-BVPFd2rffP9ftf0tQG3t9yrHmPgSU",
+          "mode": "list",
+          "cachedResultName": "Copy of NewCSI403",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1lBLT-m-s8j8RI-BVPFd2rffP9ftf0tQG3t9yrHmPgSU/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 615510512,
+          "mode": "list",
+          "cachedResultName": "tasks",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1lBLT-m-s8j8RI-BVPFd2rffP9ftf0tQG3t9yrHmPgSU/edit#gid=615510512"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "task_id": "={{'TASK-' + $now.toMillis()}}",
+            "user_id": "={{$json.user_id}}",
+            "task_name": "={{$json.task_name}}",
+            "subject": "={{$json.subject}}",
+            "task_type": "={{$json.task_type}}",
+            "notified_1h": "false",
+            "status": "pending",
+            "created_at": "={{$json.created_at}}",
+            "deadline_time": "={{$json.deadline_time}}",
+            "notified_15m": "false",
+            "has_time": "={{$json.has_time}}",
+            "deadline_date": "={{$json.deadline_date}}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "task_id",
+              "displayName": "task_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "user_id",
+              "displayName": "user_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "task_name",
+              "displayName": "task_name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "subject",
+              "displayName": "subject",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "task_type",
+              "displayName": "task_type",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "deadline_date",
+              "displayName": "deadline_date",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "deadline_time",
+              "displayName": "deadline_time",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "status",
+              "displayName": "status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "notified_1h",
+              "displayName": "notified_1h",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "notified_15m",
+              "displayName": "notified_15m",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "has_time",
+              "displayName": "has_time",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "created_at",
+              "displayName": "created_at",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -3520,
+        13488
+      ],
+      "id": "827ed74e-cd41-4fa0-9c9a-76b98b391ced",
+      "name": "GSheet Add Task1",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "tEqESgeot8cpqpu7",
+          "name": "Google Sheets account 6"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "5995b4c7-6035-4289-b3d3-38e15584a8f1",
+              "name": "text",
+              "value": "={{$json[\"body\"][\"events\"][0][\"message\"][\"text\"]}}",
+              "type": "string"
+            },
+            {
+              "id": "6de254a9-64e5-4721-b499-8f44410ef579",
+              "name": "replyToken",
+              "value": "={{$json[\"body\"][\"events\"][0][\"replyToken\"]}}",
+              "type": "string"
+            },
+            {
+              "id": "772b3b91-2dea-4f44-8f52-a24da2f2c1d2",
+              "name": "userId",
+              "value": "={{$json[\"body\"][\"events\"][0][\"source\"][\"userId\"]}}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -5536,
+        14336
+      ],
+      "id": "29413884-e766-4261-a5f1-bb81df70b389",
+      "name": "Edit Fields1"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{$json.intent}}",
+                    "rightValue": "add_task",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "slot-incomplete"
+                  },
+                  {
+                    "leftValue": "={{$json.process_status}}",
+                    "rightValue": "incomplete",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "slot-incomplete-2"
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{$json.intent}}",
+                    "rightValue": "add_task",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "c5e1a2a3-8887-4393-a959-ad734023e879"
+                  },
+                  {
+                    "leftValue": "={{$json.process_status}}",
+                    "rightValue": "complete",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "c5e1a2a3-complete"
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "40e64871-0569-4663-a152-3b75a458446f",
+                    "leftValue": "={{$json.intent}}",
+                    "rightValue": "complete_task",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "129bc85e-4892-48e2-bc3d-fe1070c03a3b",
+                    "leftValue": "={{$json.intent}}",
+                    "rightValue": "view_tasks",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "delete-task-rule",
+                    "leftValue": "={{$json.intent}}",
+                    "rightValue": "delete_task",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "edit-task-rule",
+                    "leftValue": "={{$json.intent}}",
+                    "rightValue": "edit_task",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {
+          "fallbackOutput": "extra"
+        }
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.4,
+      "position": [
+        -4416,
+        14256
+      ],
+      "id": "454da398-d3df-40e4-a17f-fb5e5b8d4c70",
+      "name": "Switch Intent"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1lBLT-m-s8j8RI-BVPFd2rffP9ftf0tQG3t9yrHmPgSU",
+          "mode": "list",
+          "cachedResultName": "Copy of NewCSI403",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1lBLT-m-s8j8RI-BVPFd2rffP9ftf0tQG3t9yrHmPgSU/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 615510512,
+          "mode": "list",
+          "cachedResultName": "tasks",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1lBLT-m-s8j8RI-BVPFd2rffP9ftf0tQG3t9yrHmPgSU/edit#gid=615510512"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "user_id",
+              "lookupValue": "={{$json.user_id}}"
+            },
+            {
+              "lookupColumn": "status",
+              "lookupValue": "pending"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -3744,
+        13856
+      ],
+      "id": "a8b14156-6080-43e7-b46f-87092fdd2ca4",
+      "name": "GSheet Find Task to Complete",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "tEqESgeot8cpqpu7",
+          "name": "Google Sheets account 6"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const found = $input.all();\nconst original = $('Code Parse').first().json;\n\nconst normalize = (s) =>\n  String(s || '')\n    .trim()\n    .toLowerCase()\n    .replace(/\\s+/g, '');\n\nconst wanted = normalize(original.task_name);\n\nlet matched = found.find(item =>\n  normalize(item.json.task_name) === wanted\n);\n\nif (!matched) {\n  matched = found.find(item =>\n    normalize(item.json.task_name).includes(wanted) ||\n    wanted.includes(normalize(item.json.task_name))\n  );\n}\n\nif (!matched || matched.json.row_number == null) {\n  return [{\n    json: {\n      user_id: original.user_id,\n      replyToken: original.replyToken,\n      reply_message: `❌ ไม่พบงาน \"${original.task_name}\" ในรายการงานค้าง`,\n      row_number: null,\n      skip_update: true\n    }\n  }];\n}\n\nreturn [{\n  json: {\n    user_id: original.user_id,\n    replyToken: original.replyToken,\n    task_name: matched.json.task_name,\n    reply_message: `✅ อัปเดตสถานะงาน \"${matched.json.task_name}\" เป็น done แล้วครับ!`,\n    row_number: matched.json.row_number,\n    skip_update: false\n  }\n}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -3520,
+        13856
+      ],
+      "id": "eeb7b973-52c5-4d93-80f6-ed96fe93dce4",
+      "name": "Code Prep Complete"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "1lBLT-m-s8j8RI-BVPFd2rffP9ftf0tQG3t9yrHmPgSU",
+          "mode": "list",
+          "cachedResultName": "Copy of NewCSI403",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1lBLT-m-s8j8RI-BVPFd2rffP9ftf0tQG3t9yrHmPgSU/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 615510512,
+          "mode": "list",
+          "cachedResultName": "tasks",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1lBLT-m-s8j8RI-BVPFd2rffP9ftf0tQG3t9yrHmPgSU/edit#gid=615510512"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "row_number": "={{$json.row_number}}",
+            "status": "done"
+          },
+          "matchingColumns": [
+            "row_number"
+          ],
+          "schema": [
+            {
+              "id": "task_id",
+              "displayName": "task_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "user_id",
+              "displayName": "user_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "task_name",
+              "displayName": "task_name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "subject",
+              "displayName": "subject",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "task_type",
+              "displayName": "task_type",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "deadline_date",
+              "displayName": "deadline_date",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "deadline_time",
+              "displayName": "deadline_time",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "status",
+              "displayName": "status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "notified_1h",
+              "displayName": "notified_1h",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "notified_15m",
+              "displayName": "notified_15m",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "has_time",
+              "displayName": "has_time",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "created_at",
+              "displayName": "created_at",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "row_number",
+              "displayName": "row_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "readOnly": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -3024,
+        13840
+      ],
+      "id": "b806b612-617d-4446-b369-72f0ebcb4447",
+      "name": "GSheet Update Status Done",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "tEqESgeot8cpqpu7",
+          "name": "Google Sheets account 6"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1lBLT-m-s8j8RI-BVPFd2rffP9ftf0tQG3t9yrHmPgSU",
+          "mode": "list",
+          "cachedResultName": "Copy of NewCSI403",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1lBLT-m-s8j8RI-BVPFd2rffP9ftf0tQG3t9yrHmPgSU/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 615510512,
+          "mode": "list",
+          "cachedResultName": "tasks",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1lBLT-m-s8j8RI-BVPFd2rffP9ftf0tQG3t9yrHmPgSU/edit#gid=615510512"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "user_id",
+              "lookupValue": "={{$json.user_id}}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -3520,
+        14096
+      ],
+      "id": "d5e6b2b6-0996-49c7-adb9-b66235a6090a",
+      "name": "GSheet Get Tasks",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "tEqESgeot8cpqpu7",
+          "name": "Google Sheets account 6"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const rows = $input.all();\nconst original = $('Code Parse').first().json;\n\nlet message = '';\n\nconst padTime = (raw) => {\n  const s = String(raw || '').trim();\n  if (!s) return '07:00';\n  const parts = s.split(':');\n  if (parts.length !== 2) return '07:00';\n\n  const h = Number(parts[0]);\n  const m = Number(parts[1]);\n  if (Number.isNaN(h) || Number.isNaN(m)) return '07:00';\n\n  return `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}`;\n};\n\nconst nowBkk = new Intl.DateTimeFormat('en-CA', {\n  timeZone: 'Asia/Bangkok',\n  year: 'numeric',\n  month: '2-digit',\n  day: '2-digit',\n}).format(new Date());\n\nconst viewMode = String(original.view_mode || 'pending_all');\n\nlet filteredRows = rows.filter(r => {\n  const status = String(r.json.status || '').toLowerCase();\n  if (viewMode === 'done_all') return status === 'done';\n  return status === 'pending';\n});\n\nif (viewMode === 'pending_today') {\n  filteredRows = filteredRows.filter(r =>\n    String(r.json.deadline_date || '') === nowBkk\n  );\n}\n\nif (filteredRows.length === 0) {\n  message =\n    viewMode === 'done_all'\n      ? '✅ ยังไม่มีงานที่เสร็จแล้วครับ'\n      : viewMode === 'pending_today'\n        ? '✅ วันนี้ไม่มีงานค้างครับ 🎉'\n        : '✅ ตอนนี้ไม่มีงานค้างเลยครับ ทำครบหมดแล้ว! 🎉';\n} else {\n  const tasks = filteredRows\n    .map(r => r.json)\n    .map(t => {\n      const timeStr = padTime(t.deadline_time);\n      t._deadline = new Date(`${t.deadline_date}T${timeStr}:00+07:00`);\n      return t;\n    })\n    .filter(t => !isNaN(t._deadline));\n\n  const sorted = tasks.sort((a, b) => a._deadline - b._deadline);\n\n  if (sorted.length === 0) {\n    message = '⚠️ พบข้อมูลงานในชีต แต่รูปแบบวันเวลาบางรายการไม่ถูกต้องครับ';\n  } else {\n    const now = new Date();\n\n    message =\n      viewMode === 'done_all'\n        ? `✅ งานที่เสร็จแล้ว (${sorted.length} งาน)\\n`\n        : viewMode === 'pending_today'\n          ? `📋 งานค้างวันนี้ (${sorted.length} งาน)\\n`\n          : `📋 งานค้างทั้งหมด (${sorted.length} งาน)\\n`;\n\n    message += `─────────────────\\n`;\n\n    sorted.forEach((task, i) => {\n      const dl = task._deadline;\n      const overdue = viewMode !== 'done_all' && dl < now;\n\n      const dlStr = dl.toLocaleDateString('th-TH', {\n        year: 'numeric',\n        month: '2-digit',\n        day: '2-digit',\n        hour: '2-digit',\n        minute: '2-digit',\n        timeZone: 'Asia/Bangkok'\n      });\n\n      const icon =\n        viewMode === 'done_all'\n          ? '✅'\n          : overdue\n            ? '🔴'\n            : '📌';\n\n      message += `${i + 1}. ${icon} ${task.task_name}\\n`;\n      message += `   📅 ${dlStr}\\n`;\n      message += `   📚 ${task.subject || '-'}\\n\\n`;\n    });\n\n    message += `─────────────────\\n`;\n    message +=\n      viewMode === 'done_all'\n        ? 'พิมพ์ \"มีงานอะไรบ้าง\" เพื่อดูงานค้างทั้งหมดได้ครับ 📋'\n        : 'พิมพ์ \"ทำ [ชื่องาน] เสร็จแล้ว\" เพื่ออัปเดตนะครับ ✏️';\n  }\n}\n\nreturn [{\n  json: {\n    user_id: original.user_id,\n    replyToken: original.replyToken,\n    reply_message: message\n  }\n}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -3296,
+        14096
+      ],
+      "id": "5ec3d0e8-e441-4561-8665-0574891675cf",
+      "name": "Code Format Task List"
+    },
+    {
+      "parameters": {
+        "jsCode": "const original = $input.first().json;\nconst base = $('Code Parse').first().json;\n\nreturn [{\n  json: {\n    user_id: original.user_id || base.user_id || '',\n    replyToken: original.replyToken || base.replyToken || '',\n    reply_message:\n      base.reply_message ||\n      original.reply_message ||\n      '❓ ขอโทษครับ ไม่เข้าใจคำสั่งนี้\\n\\nลองพิมพ์แบบนี้นะครับ:\\n• \"มีประชุม 10 โมงพรุ่งนี้\"\\n• \"กำหนดส่ง Report CSI403 วันที่ 20\"\\n• \"ทำ Assignment CSI401 เสร็จแล้ว\"\\n• \"มีงานอะไรบ้าง\"'\n  }\n}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -3280,
+        15056
+      ],
+      "id": "2cc803d0-2556-4c9e-8962-58e929c01eac",
+      "name": "Code Unknown Intent"
+    },
+    {
+      "parameters": {
+        "jsCode": "const item = $input.first().json;\nconst base = $('Code Parse').first().json;\n\nconst replyMsg   = item.reply_message || base.reply_message || 'ดำเนินการเรียบร้อยครับ ✅';\nconst replyToken = item.replyToken    || base.replyToken    || '';\n\nreturn [{ json: { replyToken, reply_message: replyMsg } }];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -2624,
+        14256
+      ],
+      "id": "c0ef9b93-783c-4ef9-8d0a-62e15aa235b1",
+      "name": "Code Merge Reply"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.line.me/v2/bot/message/reply",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer rFsUksuOenWdnm0Vqtqj5zJlHyjXJ/F1nuqA1JEvSo432rh9oSUjnKqScLuCb4tNFA8TocdVkk7sIuiXL6BB1pvLzZk1evZWqA+wUpXSoZRdJ4VMb7LnZBSyyCihircrV6oSiKzG9fbq0yG7vWA+qwdB04t89/1O/w1cDnyilFU="
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "replyToken",
+              "value": "={{$json.replyToken}}"
+            },
+            {
+              "name": "messages",
+              "value": "={{ [ { type: \"text\", text: $json.reply_message } ] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        -2400,
+        14256
+      ],
+      "id": "2eced224-b4e0-42c8-a455-0507a7b01b3f",
+      "name": "LINE Reply API4"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://minddatatech.com/llm-api/v1/chat/completions",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer sk-fa-4aec7bd976fc7a6c8ef8afaf5bbb3521bebdceca8ca5551c"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{\nJSON.stringify({\n  model: \"gpt-oss:20b\",\n  messages: [\n    {\n      role: \"system\",\n      content:\n`วิเคราะห์ข้อความจากผู้ใช้ แล้วตอบเป็น JSON เท่านั้น ห้ามมี markdown ห้ามมีคำอธิบายเพิ่ม ห้ามมีข้อความอื่นนอกจาก JSON\n\n== Context จาก session ก่อนหน้า ==\ntask_name: ${$json.session_task_name}\nsubject: ${$json.session_subject}\ntask_type: ${$json.session_task_type}\ndeadline_date: ${$json.session_deadline_date}\ndeadline_time: ${$json.session_deadline_time}\nhas_pending_session: ${$json.has_pending_session}\nวันที่วันนี้ (Bangkok): ${$now.toFormat('yyyy-MM-dd')}\n\n== กฎสำคัญที่สุด: has_pending_session ==\nถ้า has_pending_session = \"true\":\n  → intent = \"add_task\" เสมอ\n  → ผู้ใช้กำลังตอบคำถามที่ bot ถามไว้รอบก่อน\n  → ให้เอาข้อมูล session ที่มีอยู่ + ข้อความใหม่ มา MERGE กัน\n  → ห้ามสร้าง task ใหม่ ห้าม treat ข้อความสั้นๆ ว่าเป็นคำสั่งใหม่\n\nตัวอย่าง:\nsession: task_name=\"แข่ง\" deadline_date=\"2025-04-18\" (ไม่มีเวลา)\nuser พิมพ์: \"10 โมง\"\n→ task_name=\"แข่ง\" deadline_date=\"2025-04-18\" deadline_time=\"10:00\" has_time=true process_status=\"complete\"\n\nตัวอย่าง:\nsession: task_name=\"แข่ง\" (ไม่มีทั้ง date และ time)\nuser พิมพ์: \"พรุ่งนี้ตี 5\"\n→ task_name=\"แข่ง\" deadline_date=(วันพรุ่งนี้) deadline_time=\"05:00\" has_time=true process_status=\"complete\"\n\n== รูปแบบ JSON ที่ต้องตอบ ==\n{\n  \"intent\": \"add_task | complete_task | view_tasks | delete_task | edit_task | help | unknown\",\n  \"process_status\": \"complete | incomplete\",\n  \"task_name\": \"\",\n  \"new_task_name\": \"\",\n  \"subject\": \"\",\n  \"task_type\": \"Assignment | Meeting | Personal\",\n  \"deadline_date\": \"YYYY-MM-DD\",\n  \"deadline_time\": \"HH:mm\",\n  \"has_time\": false,\n  \"new_status\": \"\",\n  \"status\": \"pending\",\n  \"reply_message\": \"\"\n}\n\n== กติกา intent ==\n- add_task      → ผู้ใช้เพิ่มงานใหม่ หรือกำลังตอบ follow-up ของ bot\n- complete_task → ผู้ใช้บอกว่างานเสร็จแล้ว เช่น \"ส่งแล้ว\", \"เสร็จแล้ว\", \"ทำเสร็จ\", \"เรียบร้อยแล้ว\"\n- view_tasks    → ผู้ใช้ถามดูรายการงาน เช่น \"มีงานอะไรบ้าง\", \"งานค้างมีอะไร\", \"ขอดูงาน\"\n- delete_task   → ผู้ใช้ต้องการลบงาน เช่น \"ลบงาน X\", \"ยกเลิกงาน X\", \"ไม่ต้องทำ X แล้ว\", \"ลบทิ้ง X\"\n- edit_task     → ผู้ใช้ต้องการแก้ไขงาน เช่น \"เลื่อนงาน X เป็นวันที่ Y\", \"แก้เวลางาน X เป็น 10 โมง\", \"เปลี่ยน deadline X\", \"เปลี่ยนชื่องาน X เป็น Y\", \"เปลี่ยนสถานะงาน X เป็น done\"\n- help          → ผู้ใช้ถามวิธีใช้ เช่น \"วิธีใช้งาน\", \"ใช้งานยังไง\", \"ใช้ยังไง\", \"สอนใช้หน่อย\", \"คำสั่งมีอะไรบ้าง\"\n- unknown       → ไม่เข้าใจ\n\n== กติกาพิเศษสำหรับ delete_task ==\n- task_name คือชื่องานเดิมที่ผู้ใช้ต้องการลบ\n- process_status = \"complete\" เสมอ\n- field อื่นที่ไม่เกี่ยวข้องให้เป็นค่าว่าง\n\n== กติกาพิเศษสำหรับ edit_task ==\n- task_name = ชื่องานเดิมที่ใช้ค้นหา\n- new_task_name = ชื่อใหม่ ถ้าผู้ใช้ต้องการเปลี่ยนชื่อ\n- deadline_date = วันที่ใหม่ ถ้าผู้ใช้ต้องการเปลี่ยนวัน\n- deadline_time = เวลาใหม่ ถ้าผู้ใช้ต้องการเปลี่ยนเวลา\n- new_status = pending | done | session ถ้าผู้ใช้ต้องการเปลี่ยนสถานะ\n- ถ้าไม่ได้เปลี่ยน field ไหน ให้ field นั้นเป็น \"\"\n- process_status = \"complete\" เสมอสำหรับ edit_task\n\nตัวอย่าง:\n\"เปลี่ยนชื่องาน Report เป็น Final Report\"\n→ {\n  \"intent\":\"edit_task\",\n  \"process_status\":\"complete\",\n  \"task_name\":\"Report\",\n  \"new_task_name\":\"Final Report\",\n  \"subject\":\"\",\n  \"task_type\":\"Personal\",\n  \"deadline_date\":\"\",\n  \"deadline_time\":\"\",\n  \"has_time\":false,\n  \"new_status\":\"\",\n  \"status\":\"pending\",\n  \"reply_message\":\"\"\n}\n\n\"เลื่อนงาน Report เป็นพรุ่งนี้ 10 โมง\"\n→ {\n  \"intent\":\"edit_task\",\n  \"process_status\":\"complete\",\n  \"task_name\":\"Report\",\n  \"new_task_name\":\"\",\n  \"subject\":\"\",\n  \"task_type\":\"Personal\",\n  \"deadline_date\":\"(วันพรุ่งนี้)\",\n  \"deadline_time\":\"10:00\",\n  \"has_time\":true,\n  \"new_status\":\"\",\n  \"status\":\"pending\",\n  \"reply_message\":\"\"\n}\n\n\"เปลี่ยนสถานะงาน Report เป็น done\"\n→ {\n  \"intent\":\"edit_task\",\n  \"process_status\":\"complete\",\n  \"task_name\":\"Report\",\n  \"new_task_name\":\"\",\n  \"subject\":\"\",\n  \"task_type\":\"Personal\",\n  \"deadline_date\":\"\",\n  \"deadline_time\":\"\",\n  \"has_time\":false,\n  \"new_status\":\"done\",\n  \"status\":\"pending\",\n  \"reply_message\":\"\"\n}\n\n\"แก้งาน Report เป็น Final Report พรุ่งนี้ 10 โมง สถานะ done\"\n→ {\n  \"intent\":\"edit_task\",\n  \"process_status\":\"complete\",\n  \"task_name\":\"Report\",\n  \"new_task_name\":\"Final Report\",\n  \"subject\":\"\",\n  \"task_type\":\"Personal\",\n  \"deadline_date\":\"(วันพรุ่งนี้)\",\n  \"deadline_time\":\"10:00\",\n  \"has_time\":true,\n  \"new_status\":\"done\",\n  \"status\":\"pending\",\n  \"reply_message\":\"\"\n}\n\n== กติกา process_status (เฉพาะ add_task) ==\n- \"complete\"   → มี task_name และ deadline_date ครบ (หลัง merge session แล้ว)\n- \"incomplete\" → ยังขาด task_name หรือ deadline_date → reply_message ถามเฉพาะสิ่งที่ขาด ถามทีละอย่าง\n- intent อื่น → process_status = \"complete\" เสมอ\n\n== กติกา task_type ==\n- Meeting    → ประชุม นัด พบอาจารย์ แข่ง ซ้อม กิจกรรม สอบ\n- Assignment → งาน ส่งรายงาน การบ้าน โปรเจกต์ report quiz assignment\n- Personal   → เรื่องทั่วไปอื่นๆ\n- ถ้า session มี task_type อยู่แล้วให้ใช้ค่านั้น อย่า override\n- ถ้าเป็น edit_task / delete_task / complete_task และไม่ได้ระบุ task_type ใหม่ ให้ใช้ \"Personal\"\n\n== กติกาวันที่ ==\n- deadline_date ต้องเป็น YYYY-MM-DD เสมอ ถ้ามีการระบุวัน\n- \"พรุ่งนี้\" = วันถัดจากวันนี้\n- \"มะรืน\" = สองวันถัดจากวันนี้\n- \"วันจันทร์\" = วันจันทร์ที่ใกล้ที่สุดที่ยังไม่ผ่านมา\n- \"วันที่ 20\" = วันที่ 20 ของเดือนปัจจุบัน (ถ้าผ่านแล้วให้เป็นเดือนหน้า)\n- ถ้า session มี deadline_date อยู่แล้ว และ user ไม่ได้บอกวันใหม่ → ใช้ค่าเดิม\n- ถ้าไม่ได้ต้องการแก้วันใน edit_task → deadline_date = \"\"\n\n== กติกาเวลา ==\n- deadline_time ต้องเป็น HH:mm (24 ชม.) ถ้ามีการระบุเวลา\n- \"10 โมง\" / \"10 โมงเช้า\" = \"10:00\"\n- \"บ่าย 2\" / \"14.00\" = \"14:00\"\n- \"ตี 3\" = \"03:00\"\n- \"เย็น 5\" = \"17:00\"\n- \"เที่ยง\" = \"12:00\"\n- \"ทุ่มครึ่ง\" = \"19:30\"\n- has_time = true เมื่อมีเวลาชัดเจน\n- has_time = false เมื่อไม่มีเวลาชัดเจน\n- ถ้า session มี deadline_time อยู่แล้ว และ user ไม่ได้บอกเวลาใหม่ → ใช้ค่าเดิม\n- ถ้าไม่ได้ต้องการแก้เวลาใน edit_task → deadline_time = \"\"\n\n== กติกา new_status ==\n- ใช้ได้เฉพาะ pending, done, session เท่านั้น\n- ถ้าผู้ใช้พูดว่า \"เสร็จแล้ว\", \"ส่งแล้ว\", \"เรียบร้อยแล้ว\" และไม่ได้อยู่ในรูป edit_task ให้ใช้ intent = \"complete_task\"\n- ถ้าผู้ใช้บอก \"เปลี่ยนสถานะ...\" ให้ใช้ intent = \"edit_task\"\n- ถ้าผู้ใช้ไม่ได้ต้องการเปลี่ยนสถานะ ให้ new_status = \"\"\n\n== กติกา subject ==\n- ใส่ชื่อวิชา/หมวดหมู่ถ้ามี เช่น \"CSI403\", \"ภาษาอังกฤษ\"\n- ถ้าไม่มีให้เป็น \"\"\n- ถ้า session มีอยู่แล้วให้ใช้ค่าเดิม\n\n== กติกา reply_message ==\n- ถ้า incomplete: ถามเฉพาะ field ที่ขาด เช่น \"วันไหนครับ?\" หรือ \"กี่โมงดีครับ?\"\n- ถ้าขาด task_name ให้ถาม \"งานอะไรครับ?\"\n- ถ้าขาด deadline_date ให้ถาม \"วันไหนครับ?\"\n- ถ้า complete: ให้เป็น \"\"\n- ต้องเป็นภาษาไทย กระชับ สุภาพ\n\n== กติกาความแม่นยำ ==\n- ตอบเป็น JSON valid 100%\n- ห้ามใส่ markdown\n- ห้ามใส่ \\`\\`\\`json\n- ห้ามมีข้อความอื่นนอกจาก JSON\n- ถ้าไม่แน่ใจ intent ให้ใช้ unknown`\n    },\n    {\n      role: \"user\",\n      content: $json.text\n    }\n  ]\n})\n}}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        -4864,
+        14336
+      ],
+      "id": "36b34954-4879-4d99-b8c4-cdf1c23a49cd",
+      "name": "HTTP Request1"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1lBLT-m-s8j8RI-BVPFd2rffP9ftf0tQG3t9yrHmPgSU",
+          "mode": "list",
+          "cachedResultName": "Copy of NewCSI403",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1lBLT-m-s8j8RI-BVPFd2rffP9ftf0tQG3t9yrHmPgSU/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 615510512,
+          "mode": "list",
+          "cachedResultName": "tasks",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1lBLT-m-s8j8RI-BVPFd2rffP9ftf0tQG3t9yrHmPgSU/edit#gid=615510512"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "user_id",
+              "lookupValue": "={{$json.userId}}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -5312,
+        14336
+      ],
+      "id": "792d6b18-5b61-4bb0-94a8-0478afdbc8fb",
+      "name": "GSheet Read Session",
+      "alwaysOutputData": true,
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "tEqESgeot8cpqpu7",
+          "name": "Google Sheets account 6"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const editFields = $('Edit Fields1').first().json;\nconst sessionRows = $input.all();\n\n// session ล่าสุดของ user\nconst sessionCandidates = sessionRows\n  .filter(r => String(r.json.user_id || '') === String(editFields.userId || ''))\n  .filter(r => String(r.json.status || '').toLowerCase() === 'session')\n  .map(r => r.json)\n  .sort((a, b) => {\n    const aRow = Number(a.row_number || 0);\n    const bRow = Number(b.row_number || 0);\n    if (aRow !== bRow) return bRow - aRow;\n\n    const aTime = new Date(a.created_at || 0).getTime();\n    const bTime = new Date(b.created_at || 0).getTime();\n    return bTime - aTime;\n  });\n\nconst sessionRow = sessionCandidates[0] || null;\nconst session = sessionRow || {};\n\nconst hasActiveSession = !!(\n  sessionRow &&\n  (\n    String(session.task_name || '').trim() !== '' ||\n    String(session.deadline_date || '').trim() !== '' ||\n    String(session.deadline_time || '').trim() !== '' ||\n    String(session.subject || '').trim() !== ''\n  )\n);\n\n// task ล่าสุดจริงของ user (ไม่เอา session)\nconst realRows = sessionRows\n  .map(r => r.json)\n  .filter(r =>\n    String(r.user_id || '') === String(editFields.userId || '') &&\n    String(r.status || '').toLowerCase() !== 'session'\n  )\n  .sort((a, b) => {\n    const aRow = Number(a.row_number || 0);\n    const bRow = Number(b.row_number || 0);\n    if (aRow !== bRow) return bRow - aRow;\n\n    const aTime = new Date(a.created_at || 0).getTime();\n    const bTime = new Date(b.created_at || 0).getTime();\n    return bTime - aTime;\n  });\n\nconst latestTask = realRows[0] || {};\n\nreturn [{\n  json: {\n    userId: editFields.userId,\n    replyToken: editFields.replyToken,\n    text: editFields.text,\n\n    session_task_name: session.task_name || '',\n    session_subject: session.subject || '',\n    session_task_type: session.task_type || '',\n    session_deadline_date: session.deadline_date || '',\n    session_deadline_time: session.deadline_time || '',\n    session_has_time: session.has_time || '',\n    has_pending_session: hasActiveSession ? 'true' : 'false',\n\n    latest_task_name: latestTask.task_name || '',\n    latest_subject: latestTask.subject || '',\n    latest_task_type: latestTask.task_type || '',\n    latest_deadline_date: latestTask.deadline_date || '',\n    latest_deadline_time: latestTask.deadline_time || '',\n    latest_status: latestTask.status || '',\n\n    last_task_name: latestTask.task_name || ''\n  }\n}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -5088,
+        14336
+      ],
+      "id": "206ceaf7-f785-4d86-8850-a2fb78c1c985",
+      "name": "Code Merge Session"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1lBLT-m-s8j8RI-BVPFd2rffP9ftf0tQG3t9yrHmPgSU",
+          "mode": "list",
+          "cachedResultName": "Copy of NewCSI403",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1lBLT-m-s8j8RI-BVPFd2rffP9ftf0tQG3t9yrHmPgSU/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 615510512,
+          "mode": "list",
+          "cachedResultName": "tasks",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1lBLT-m-s8j8RI-BVPFd2rffP9ftf0tQG3t9yrHmPgSU/edit#gid=615510512"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "user_id": "={{ $json.user_id }}",
+            "task_name": "={{ $json.task_name }}",
+            "subject": "={{ $json.subject }}",
+            "task_type": "={{ $json.task_type }}",
+            "deadline_date": "={{ $json.deadline_date }}",
+            "deadline_time": "={{ $json.deadline_time }}",
+            "has_time": "={{ $json.has_time }}",
+            "status": "session",
+            "notified_1h": "false",
+            "notified_15m": "false",
+            "created_at": "={{ $json.created_at }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "task_id",
+              "displayName": "task_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "user_id",
+              "displayName": "user_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "task_name",
+              "displayName": "task_name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "subject",
+              "displayName": "subject",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "task_type",
+              "displayName": "task_type",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "deadline_date",
+              "displayName": "deadline_date",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "deadline_time",
+              "displayName": "deadline_time",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "status",
+              "displayName": "status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "notified_1h",
+              "displayName": "notified_1h",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "notified_15m",
+              "displayName": "notified_15m",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "has_time",
+              "displayName": "has_time",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "created_at",
+              "displayName": "created_at",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -3296,
+        14592
+      ],
+      "id": "4ef6020e-9500-4953-be0a-7ce5824eeac5",
+      "name": "GSheet Save Session",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "tEqESgeot8cpqpu7",
+          "name": "Google Sheets account 6"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1lBLT-m-s8j8RI-BVPFd2rffP9ftf0tQG3t9yrHmPgSU",
+          "mode": "list",
+          "cachedResultName": "Copy of NewCSI403",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1lBLT-m-s8j8RI-BVPFd2rffP9ftf0tQG3t9yrHmPgSU/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 615510512,
+          "mode": "list",
+          "cachedResultName": "tasks",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1lBLT-m-s8j8RI-BVPFd2rffP9ftf0tQG3t9yrHmPgSU/edit#gid=615510512"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "user_id",
+              "lookupValue": "={{$json.user_id}}"
+            },
+            {
+              "lookupColumn": "deadline_date",
+              "lookupValue": "={{$json.deadline_date}}"
+            },
+            {
+              "lookupColumn": "status",
+              "lookupValue": "pending"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -4192,
+        13568
+      ],
+      "id": "b4c30dda-c0b7-4acf-a748-988e5554a208",
+      "name": "GSheet Check Conflict1",
+      "alwaysOutputData": true,
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "tEqESgeot8cpqpu7",
+          "name": "Google Sheets account 6"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "\nconst rows = $input.all();\nconst parsed = $('Code Parse').first().json;\n\nconst newDate = parsed.deadline_date || '';\nconst newTime = parsed.deadline_time || '';\nconst newTaskType = parsed.task_type || '';\n\n// Only check time conflict for Meeting tasks that have a time\nconst shouldCheckTime = newTaskType === 'Meeting' && newTime !== '';\n\nlet conflicts = [];\n\nif (shouldCheckTime) {\n  const [newH, newM] = newTime.split(':').map(Number);\n  const newMins = newH * 60 + newM;\n\n  for (const row of rows) {\n    const t = row.json;\n    if (!t.deadline_time || t.deadline_time === '') continue;\n    if (t.task_name === parsed.task_name) continue; // skip same task\n\n    const [h, m] = String(t.deadline_time).split(':').map(Number);\n    const existMins = h * 60 + m;\n    const diff = Math.abs(newMins - existMins);\n\n    if (diff < 60) { // within 60 minutes = conflict\n      conflicts.push({\n        task_name: t.task_name,\n        deadline_time: t.deadline_time,\n        subject: t.subject || '-'\n      });\n    }\n  }\n}\n\nconst hasConflict = conflicts.length > 0;\n\nif (hasConflict) {\n  const conflictList = conflicts.map(c =>\n    `• ${c.task_name} (${c.subject}) เวลา ${c.deadline_time}`\n  ).join('\\n');\n\n  const warningMsg =\n    `⚠️ พบนัดซ้อนในวันที่ ${newDate}!\\n\\n` +\n    `งานที่ทับกัน:\\n${conflictList}\\n\\n` +\n    `ต้องการบันทึก \"${parsed.task_name}\" เวลา ${newTime} ต่อไหมครับ?`;\n\n  return [{\n    json: {\n      has_conflict: \"true\",\n      user_id:      parsed.user_id,\n      replyToken:   parsed.replyToken,\n      reply_message: warningMsg,\n      quick_reply_type: 'conflict_confirm',\n      // Pass through all task data so we can save later\n      pending_task: JSON.stringify({\n        user_id:       parsed.user_id,\n        task_name:     parsed.task_name,\n        subject:       parsed.subject,\n        task_type:     parsed.task_type,\n        deadline_date: parsed.deadline_date,\n        deadline_time: parsed.deadline_time,\n        has_time:      parsed.has_time,\n        created_at:    parsed.created_at\n      })\n    }\n  }];\n}\n\n// No conflict — pass through for normal save\nreturn [{\n  json: {\n    has_conflict: \"false\",\n    ...parsed\n  }\n}];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -3968,
+        13568
+      ],
+      "id": "8a8d44b3-a113-42e6-a323-372bad5e5ab5",
+      "name": "Code Detect Conflict1"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "no-conflict",
+                    "leftValue": "={{$json.has_conflict}}",
+                    "rightValue": "false",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {
+          "fallbackOutput": "extra"
+        }
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.4,
+      "position": [
+        -3744,
+        13568
+      ],
+      "id": "e2bbf6d4-f835-4dda-9bdb-e9c9bdf08dc1",
+      "name": "Switch Conflict1"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1lBLT-m-s8j8RI-BVPFd2rffP9ftf0tQG3t9yrHmPgSU",
+          "mode": "list",
+          "cachedResultName": "Copy of NewCSI403",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1lBLT-m-s8j8RI-BVPFd2rffP9ftf0tQG3t9yrHmPgSU/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 615510512,
+          "mode": "list",
+          "cachedResultName": "tasks",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1lBLT-m-s8j8RI-BVPFd2rffP9ftf0tQG3t9yrHmPgSU/edit#gid=615510512"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "user_id",
+              "lookupValue": "={{$json.user_id}}"
+            },
+            {
+              "lookupColumn": "task_name",
+              "lookupValue": "={{$json.task_name}}"
+            },
+            {
+              "lookupColumn": "status",
+              "lookupValue": "pending"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -3744,
+        14336
+      ],
+      "id": "9ffa6502-d75f-4e8a-83d0-69f15774f500",
+      "name": "GSheet Find Task to Delete1",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "tEqESgeot8cpqpu7",
+          "name": "Google Sheets account 6"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "\nconst found = $input.all();\nconst original = $('Code Parse').first().json;\n\nif (found.length === 0 || found[0].json.row_number == null) {\n  return [{\n    json: {\n      user_id:      original.user_id,\n      replyToken:   original.replyToken,\n      reply_message: `❌ ไม่พบงาน \"${original.task_name}\" ในรายการครับ\\n\\nลองพิมพ์ \"มีงานอะไรบ้าง\" เพื่อดูชื่องานที่ถูกต้องนะครับ`,\n      skip_delete:  true,\n      row_number:   null\n    }\n  }];\n}\n\nconst task = found[0].json;\nreturn [{\n  json: {\n    user_id:      original.user_id,\n    replyToken:   original.replyToken,\n    task_name:    task.task_name,\n    reply_message: `🗑️ ลบงาน \"${task.task_name}\" เรียบร้อยแล้วครับ!`,\n    row_number:   task.row_number,\n    skip_delete:  false\n  }\n}];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -3520,
+        14336
+      ],
+      "id": "fd0005a9-bdcf-4ebf-83d5-086c7c9a5b96",
+      "name": "Code Prep Delete1"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "1lBLT-m-s8j8RI-BVPFd2rffP9ftf0tQG3t9yrHmPgSU",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 615510512,
+          "mode": "list",
+          "cachedResultName": "tasks",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1lBLT-m-s8j8RI-BVPFd2rffP9ftf0tQG3t9yrHmPgSU/edit#gid=615510512"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "row_number": "={{$json.row_number}}",
+            "status": "deleted"
+          },
+          "matchingColumns": [
+            "row_number"
+          ],
+          "schema": [
+            {
+              "id": "task_id",
+              "displayName": "task_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "user_id",
+              "displayName": "user_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "task_name",
+              "displayName": "task_name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "subject",
+              "displayName": "subject",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "task_type",
+              "displayName": "task_type",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "deadline_date",
+              "displayName": "deadline_date",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "deadline_time",
+              "displayName": "deadline_time",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "status",
+              "displayName": "status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "notified_1h",
+              "displayName": "notified_1h",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "notified_15m",
+              "displayName": "notified_15m",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "has_time",
+              "displayName": "has_time",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "created_at",
+              "displayName": "created_at",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "row_number",
+              "displayName": "row_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "readOnly": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -3296,
+        14400
+      ],
+      "id": "1381929d-4540-4acc-8d7e-cb6d3a399ca1",
+      "name": "GSheet Delete Task1",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "tEqESgeot8cpqpu7",
+          "name": "Google Sheets account 6"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1lBLT-m-s8j8RI-BVPFd2rffP9ftf0tQG3t9yrHmPgSU",
+          "mode": "list",
+          "cachedResultName": "Copy of NewCSI403",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1lBLT-m-s8j8RI-BVPFd2rffP9ftf0tQG3t9yrHmPgSU/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 615510512,
+          "mode": "list",
+          "cachedResultName": "tasks",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1lBLT-m-s8j8RI-BVPFd2rffP9ftf0tQG3t9yrHmPgSU/edit#gid=615510512"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "user_id",
+              "lookupValue": "={{$json.user_id}}"
+            },
+            {
+              "lookupColumn": "status",
+              "lookupValue": "pending"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -3760,
+        14624
+      ],
+      "id": "25c62b30-bbf5-4bdd-acdf-cf313e8c4339",
+      "name": "GSheet Find Task to Edit1",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "tEqESgeot8cpqpu7",
+          "name": "Google Sheets account 6"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const found = $input.all();\nconst original = $('Code Parse').first().json;\n\nconst normalize = (s) =>\n  String(s || '')\n    .trim()\n    .toLowerCase()\n    .replace(/\\s+/g, '');\n\nconst wanted = normalize(original.task_name);\n\nlet matched = found.find(item =>\n  normalize(item.json.task_name) === wanted\n);\n\nif (!matched) {\n  matched = found.find(item =>\n    normalize(item.json.task_name).includes(wanted) ||\n    wanted.includes(normalize(item.json.task_name))\n  );\n}\n\nif (!matched || matched.json.row_number == null) {\n  return [{\n    json: {\n      user_id: original.user_id,\n      replyToken: original.replyToken,\n      row_number: null,\n      task_id: '',\n      skip_update: true,\n      reply_message: `❌ ไม่พบงาน \"${original.task_name}\" ที่ต้องการแก้ไข`\n    }\n  }];\n}\n\nconst oldTask = matched.json;\n\nconst finalTaskName = original.new_task_name && String(original.new_task_name).trim() !== ''\n  ? original.new_task_name\n  : oldTask.task_name;\n\nconst finalDeadlineDate = original.deadline_date && String(original.deadline_date).trim() !== ''\n  ? original.deadline_date\n  : oldTask.deadline_date;\n\nconst finalDeadlineTime = original.deadline_time && String(original.deadline_time).trim() !== ''\n  ? original.deadline_time\n  : oldTask.deadline_time;\n\nconst finalStatus = original.new_status && String(original.new_status).trim() !== ''\n  ? original.new_status\n  : oldTask.status;\n\nconst hasTime = finalDeadlineTime && String(finalDeadlineTime).trim() !== '' ? 'true' : 'false';\n\nreturn [{\n  json: {\n    user_id: original.user_id,\n    replyToken: original.replyToken,\n    row_number: oldTask.row_number,\n    task_id: oldTask.task_id,\n    task_name: oldTask.task_name,\n    new_task_name: finalTaskName,\n    deadline_date: finalDeadlineDate,\n    deadline_time: finalDeadlineTime,\n    has_time: hasTime,\n    new_status: finalStatus,\n    notified_1h: oldTask.notified_1h || 'false',\n    notified_15m: oldTask.notified_15m || 'false',\n    skip_update: false,\n    reply_message:\n      `✅ แก้ไขงานเรียบร้อยแล้ว\\n\\n` +\n      `📌 ${finalTaskName}\\n` +\n      `📅 ${finalDeadlineDate || '-'} ${finalDeadlineTime || ''}\\n` +\n      `📍 สถานะ: ${finalStatus}`\n  }\n}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -3520,
+        14704
+      ],
+      "id": "dbf7525a-b495-4668-856f-cf01f6566f42",
+      "name": "Code Prep Edit1"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "1lBLT-m-s8j8RI-BVPFd2rffP9ftf0tQG3t9yrHmPgSU",
+          "mode": "list",
+          "cachedResultName": "Copy of NewCSI403",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1lBLT-m-s8j8RI-BVPFd2rffP9ftf0tQG3t9yrHmPgSU/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 615510512,
+          "mode": "list",
+          "cachedResultName": "tasks",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1lBLT-m-s8j8RI-BVPFd2rffP9ftf0tQG3t9yrHmPgSU/edit#gid=615510512"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "task_id": "={{$json.task_id}}",
+            "task_name": "={{$json.new_task_name}}",
+            "deadline_date": "={{$json.deadline_date}}",
+            "deadline_time": "={{$json.deadline_time}}",
+            "has_time": "={{$json.has_time}}",
+            "status": "={{$json.new_status}}",
+            "notified_1h": "={{$json.notified_1h || 'false'}}",
+            "notified_15m": "={{$json.notified_15m || 'false'}}",
+            "row_number": 0
+          },
+          "matchingColumns": [
+            "task_id"
+          ],
+          "schema": [
+            {
+              "id": "task_id",
+              "displayName": "task_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "user_id",
+              "displayName": "user_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "task_name",
+              "displayName": "task_name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "subject",
+              "displayName": "subject",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "task_type",
+              "displayName": "task_type",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "deadline_date",
+              "displayName": "deadline_date",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "deadline_time",
+              "displayName": "deadline_time",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "status",
+              "displayName": "status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "notified_1h",
+              "displayName": "notified_1h",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "notified_15m",
+              "displayName": "notified_15m",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "has_time",
+              "displayName": "has_time",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "created_at",
+              "displayName": "created_at",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "row_number",
+              "displayName": "row_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "readOnly": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -2816,
+        14752
+      ],
+      "id": "b361eee2-dace-4aa6-a498-0269229f5ee6",
+      "name": "GSheet Update Task Edit1",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "tEqESgeot8cpqpu7",
+          "name": "Google Sheets account 6"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "3d27ac43-c2c1-4c41-80f4-c5e01bb2709c",
+                    "leftValue": "={{$json.skip_update.toString()}}",
+                    "rightValue": "false",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {
+          "fallbackOutput": "extra"
+        }
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.4,
+      "position": [
+        -3296,
+        13856
+      ],
+      "id": "f2e1e995-3f8c-43a9-abc0-8faca217ee1c",
+      "name": "Switch Complete Found1"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "3123bffc-9318-48e1-b636-d023c164f73e",
+                    "leftValue": "{{$json.skip_update.toString()}}",
+                    "rightValue": "false",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {
+          "fallbackOutput": "extra"
+        }
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.4,
+      "position": [
+        -3280,
+        14864
+      ],
+      "id": "51e45c44-87e2-42e2-8bc1-4881643e4de9",
+      "name": "Switch Edit Found1"
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 7
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.3,
+      "position": [
+        -5760,
+        15232
+      ],
+      "id": "5a0d1001-5824-4f53-9de6-f0c7d8e59987",
+      "name": "Schedule Morning Brief1"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1lBLT-m-s8j8RI-BVPFd2rffP9ftf0tQG3t9yrHmPgSU",
+          "mode": "list",
+          "cachedResultName": "Copy of NewCSI403",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1lBLT-m-s8j8RI-BVPFd2rffP9ftf0tQG3t9yrHmPgSU/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 615510512,
+          "mode": "list",
+          "cachedResultName": "tasks",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1lBLT-m-s8j8RI-BVPFd2rffP9ftf0tQG3t9yrHmPgSU/edit#gid=615510512"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "status",
+              "lookupValue": "pending"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -5536,
+        15232
+      ],
+      "id": "ef09eec2-938c-445b-a911-43d0c5e17e45",
+      "name": "GSheet Get All Pending Morning1",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "tEqESgeot8cpqpu7",
+          "name": "Google Sheets account 6"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const items = $input.all();\nconst now = new Date();\n\nconst userMap = {};\nfor (const item of items) {\n  const task = item.json;\n  // กรองเฉพาะ pending (ไม่เอา done, session)\n  if (!task.user_id || !task.deadline_date) continue;\n  if (String(task.status).toLowerCase() !== 'pending') continue;\n\n  const padTime = (raw) => {\n    const s = String(raw || '').trim();\n    if (!s) return '07:00';\n    const parts = s.split(':');\n    if (parts.length !== 2) return '07:00';\n    const h = Number(parts[0]);\n    const m = Number(parts[1]);\n    if (Number.isNaN(h) || Number.isNaN(m)) return '07:00';\n    return `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}`;\n  };\n  const timeStr = padTime(task.deadline_time);\n  task._deadline = new Date(`${task.deadline_date}T${timeStr}:00+07:00`);\n  if (isNaN(task._deadline)) continue;\n\n  if (!userMap[task.user_id]) userMap[task.user_id] = [];\n  userMap[task.user_id].push(task);\n}\n\nconst results = [];\nfor (const [userId, tasks] of Object.entries(userMap)) {\n  const sorted = tasks.sort((a, b) => a._deadline - b._deadline);\n\n  const overdue  = sorted.filter(t => t._deadline < now);\n  const upcoming = sorted.filter(t => {\n    const daysLeft = (t._deadline - now) / 86400000;\n    return daysLeft >= 0 && daysLeft <= 7;\n  });\n  const allPending = sorted.filter(t => t._deadline >= now);\n\n  let message = `🌅 อรุณสวัสดิ์ครับ! สรุปงานประจำวัน\\n`;\n  message += `📅 ${now.toLocaleDateString('th-TH', {\n    weekday:'long', year:'numeric', month:'long', day:'numeric',\n    timeZone:'Asia/Bangkok'\n  })}\\n`;\n  message += `─────────────────\\n`;\n\n  if (overdue.length > 0) {\n    message += `\\n🔴 เลยกำหนดแล้ว! (${overdue.length} งาน)\\n`;\n    overdue.forEach(task => {\n      const dl = task._deadline;\n      const dlStr = dl.toLocaleDateString('th-TH', {month:'short', day:'numeric', hour:'2-digit', minute:'2-digit', timeZone:'Asia/Bangkok'});\n      message += `❗ ${task.task_name} (${task.subject || '-'}) — ${dlStr}\\n`;\n    });\n  }\n\n  if (upcoming.length > 0) {\n    message += `\\n⚡ งาน deadline ใน 7 วัน (${upcoming.length} งาน)\\n`;\n    upcoming.forEach(task => {\n      const dl = task._deadline;\n      const daysLeft  = Math.round((dl - now) / 86400000);\n      const hoursLeft = Math.round((dl - now) / 3600000);\n      const dlStr = dl.toLocaleDateString('th-TH', {month:'short', day:'numeric', hour:'2-digit', minute:'2-digit', timeZone:'Asia/Bangkok'});\n      const urgency = hoursLeft < 3 ? '🔴' : hoursLeft < 6 ? '🟠' : daysLeft <= 1 ? '🟡' : '🟢';\n      message += `${urgency} ${task.task_name} (${task.subject || '-'}) — ${dlStr}\\n`;\n    });\n  } else if (overdue.length === 0) {\n    message += `\\n✅ ไม่มีงาน deadline ใน 7 วันข้างหน้า\\n`;\n  }\n\n  message += `\\n─────────────────`;\n  message += `\\n📊 งานค้างรวม: ${allPending.length} งาน`;\n  message += `\\nสู้ๆ นะครับ! 💪`;\n\n  results.push({ json: { user_id: userId, push_message: message } });\n}\n\nif (results.length === 0) return [];\nreturn results;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -5312,
+        15232
+      ],
+      "id": "d2a1c1d0-4eab-4cb5-b237-d06f16cf82e4",
+      "name": "Code Build Morning Brief1"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.line.me/v2/bot/message/push",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer rFsUksuOenWdnm0Vqtqj5zJlHyjXJ/F1nuqA1JEvSo432rh9oSUjnKqScLuCb4tNFA8TocdVkk7sIuiXL6BB1pvLzZk1evZWqA+wUpXSoZRdJ4VMb7LnZBSyyCihircrV6oSiKzG9fbq0yG7vWA+qwdB04t89/1O/w1cDnyilFU="
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{\n  {\n    to: $json.user_id,\n    messages: [\n      {\n        type: \"text\",\n        text: $json.push_message\n      }\n    ]\n  }\n}}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        -5088,
+        15232
+      ],
+      "id": "ab70fa0f-2d9a-42eb-937d-94a510a50425",
+      "name": "LINE Push Morning Brief1"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.line.me/v2/bot/message/push",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer rFsUksuOenWdnm0Vqtqj5zJlHyjXJ/F1nuqA1JEvSo432rh9oSUjnKqScLuCb4tNFA8TocdVkk7sIuiXL6BB1pvLzZk1evZWqA+wUpXSoZRdJ4VMb7LnZBSyyCihircrV6oSiKzG9fbq0yG7vWA+qwdB04t89/1O/w1cDnyilFU="
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{\nJSON.stringify({\n  to: $json.user_id,\n  messages: [\n    {\n      type: \"text\",\n      text: $json.push_message\n    }\n  ]\n})\n}}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        -4864,
+        14656
+      ],
+      "id": "05d14d1d-bd65-4d39-8c6e-5f36fb18b12b",
+      "name": "LINE Push Deadline Notify1"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "1lBLT-m-s8j8RI-BVPFd2rffP9ftf0tQG3t9yrHmPgSU",
+          "mode": "list",
+          "cachedResultName": "Copy of NewCSI403",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1lBLT-m-s8j8RI-BVPFd2rffP9ftf0tQG3t9yrHmPgSU/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 615510512,
+          "mode": "list",
+          "cachedResultName": "tasks",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1lBLT-m-s8j8RI-BVPFd2rffP9ftf0tQG3t9yrHmPgSU/edit#gid=615510512"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "task_id": "={{$json.task_id}}",
+            "notified_1h": "={{$json.notify_key === 'notified_1h' || String($json.current_notified_1h).toLowerCase() === 'true' ? 'true' : 'false'}}",
+            "notified_15m": "={{$json.notify_key === 'notified_15m' || String($json.current_notified_15m).toLowerCase() === 'true' ? 'true' : 'false'}}"
+          },
+          "matchingColumns": [
+            "task_id"
+          ],
+          "schema": [
+            {
+              "id": "task_id",
+              "displayName": "task_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "user_id",
+              "displayName": "user_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "task_name",
+              "displayName": "task_name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "subject",
+              "displayName": "subject",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "task_type",
+              "displayName": "task_type",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "deadline_date",
+              "displayName": "deadline_date",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "deadline_time",
+              "displayName": "deadline_time",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "status",
+              "displayName": "status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "notified_1h",
+              "displayName": "notified_1h",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "notified_15m",
+              "displayName": "notified_15m",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "has_time",
+              "displayName": "has_time",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "created_at",
+              "displayName": "created_at",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "row_number",
+              "displayName": "row_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "readOnly": true,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -4864,
+        14832
+      ],
+      "id": "76cb4170-525c-4c1d-aebd-d3ff76931f88",
+      "name": "GSheet Update Notified Flags1",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "tEqESgeot8cpqpu7",
+          "name": "Google Sheets account 6"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const updated = $('GSheet Auto Done Overdue1').first().json;\nconst original = $('Switch Deadline Action1').first().json;\n\nreturn [{\n  json: {\n    ...original,\n    ...updated\n  }\n}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -4640,
+        15008
+      ],
+      "id": "828da6bf-e46f-43cd-9ace-29979fe239e3",
+      "name": "Code Merge Auto Done1"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.line.me/v2/bot/message/push",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer rFsUksuOenWdnm0Vqtqj5zJlHyjXJ/F1nuqA1JEvSo432rh9oSUjnKqScLuCb4tNFA8TocdVkk7sIuiXL6BB1pvLzZk1evZWqA+wUpXSoZRdJ4VMb7LnZBSyyCihircrV6oSiKzG9fbq0yG7vWA+qwdB04t89/1O/w1cDnyilFU="
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{\nJSON.stringify({\n  to: $json.user_id,\n  messages: [\n    {\n      type: \"text\",\n      text: $json.push_message\n    }\n  ]\n})\n}}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        -4416,
+        15008
+      ],
+      "id": "86f85c1d-e671-4f45-831a-3c63f4235eaf",
+      "name": "LINE Push Auto Done1"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "1lBLT-m-s8j8RI-BVPFd2rffP9ftf0tQG3t9yrHmPgSU",
+          "mode": "list",
+          "cachedResultName": "Copy of NewCSI403",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1lBLT-m-s8j8RI-BVPFd2rffP9ftf0tQG3t9yrHmPgSU/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 615510512,
+          "mode": "list",
+          "cachedResultName": "tasks",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1lBLT-m-s8j8RI-BVPFd2rffP9ftf0tQG3t9yrHmPgSU/edit#gid=615510512"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "task_id": "={{$json.task_id}}",
+            "status": "done"
+          },
+          "matchingColumns": [
+            "task_id"
+          ],
+          "schema": [
+            {
+              "id": "task_id",
+              "displayName": "task_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "user_id",
+              "displayName": "user_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "task_name",
+              "displayName": "task_name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "subject",
+              "displayName": "subject",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "task_type",
+              "displayName": "task_type",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "deadline_date",
+              "displayName": "deadline_date",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "deadline_time",
+              "displayName": "deadline_time",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "status",
+              "displayName": "status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "notified_1h",
+              "displayName": "notified_1h",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "notified_15m",
+              "displayName": "notified_15m",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "has_time",
+              "displayName": "has_time",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "created_at",
+              "displayName": "created_at",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "row_number",
+              "displayName": "row_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "readOnly": true,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -4864,
+        15008
+      ],
+      "id": "65548394-576a-465e-a5df-2bde4ed9d4f0",
+      "name": "GSheet Auto Done Overdue1",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "tEqESgeot8cpqpu7",
+          "name": "Google Sheets account 6"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "deadline-action-1h",
+                    "leftValue": "={{$json.action}}",
+                    "rightValue": "notify_1h",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "deadline-action-15m",
+                    "leftValue": "={{$json.action}}",
+                    "rightValue": "notify_15m",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "deadline-action-auto",
+                    "leftValue": "={{$json.action}}",
+                    "rightValue": "auto_done_1h_overdue",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {
+          "fallbackOutput": "extra"
+        }
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.4,
+      "position": [
+        -5088,
+        14880
+      ],
+      "id": "5d664018-7533-470f-87b4-b1ed2295d34d",
+      "name": "Switch Deadline Action1"
+    },
+    {
+      "parameters": {
+        "jsCode": "const items = $input.all();\nconst results = [];\n\nconst nowParts = new Intl.DateTimeFormat('en-GB', {\n  timeZone: 'Asia/Bangkok',\n  year: 'numeric',\n  month: '2-digit',\n  day: '2-digit',\n  hour: '2-digit',\n  minute: '2-digit',\n  hourCycle: 'h23',\n}).formatToParts(new Date());\n\nconst getPart = (type) => nowParts.find(p => p.type === type)?.value || '';\n\nconst nowY = Number(getPart('year'));\nconst nowM = Number(getPart('month'));\nconst nowD = Number(getPart('day'));\nconst nowH = Number(getPart('hour'));\nconst nowMin = Number(getPart('minute'));\n\nconst nowUtcMs = Date.UTC(nowY, nowM - 1, nowD, nowH, nowMin);\n\nconst padTime = (raw) => {\n  const s = String(raw || '').trim();\n  if (!s) return '07:00';\n  const parts = s.split(':');\n  if (parts.length !== 2) return '07:00';\n  const h = Number(parts[0]);\n  const m = Number(parts[1]);\n  if (Number.isNaN(h) || Number.isNaN(m)) return '07:00';\n  return `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}`;\n};\n\nfor (const item of items) {\n  const task = item.json;\n\n  if (!task.task_id) continue;\n  if (!task.user_id) continue;\n  if (!task.deadline_date) continue;\n  if (String(task.status).toLowerCase() !== 'pending') continue;\n\n  const dateStr = String(task.deadline_date).trim();\n  const dateParts = dateStr.split('-');\n  if (dateParts.length !== 3) continue;\n\n  const year = Number(dateParts[0]);\n  const month = Number(dateParts[1]);\n  const day = Number(dateParts[2]);\n\n  const rawTime = padTime(task.deadline_time);\n  const [hour, minute] = rawTime.split(':').map(Number);\n\n  if (\n    Number.isNaN(year) ||\n    Number.isNaN(month) ||\n    Number.isNaN(day) ||\n    Number.isNaN(hour) ||\n    Number.isNaN(minute)\n  ) continue;\n\n  const deadlineUtcMs = Date.UTC(year, month - 1, day, hour, minute);\n  const minsLeft = Math.round((deadlineUtcMs - nowUtcMs) / 60000);\n  const minsOverdue = Math.abs(minsLeft);\n\n  const notified1h = String(task.notified_1h).toLowerCase() === 'true';\n  const notified15m = String(task.notified_15m).toLowerCase() === 'true';\n\n  let action = '';\n  let notifyKey = '';\n  let pushMessage = '';\n\n  const hh = String(hour).padStart(2, '0');\n  const mm = String(minute).padStart(2, '0');\n\n  if (minsLeft > 0) {\n    if (minsLeft <= 15 && !notified15m) {\n      action = 'notify_15m';\n      notifyKey = 'notified_15m';\n      pushMessage =\n        `⏰ อีก 15 นาทีจะถึงกำหนดแล้ว\\n\\n` +\n        `📌 ${task.task_name || '-'}\\n` +\n        `📚 ${task.subject || '-'}\\n` +\n        `🗂️ ${task.task_type || '-'}\\n` +\n        `📅 กำหนด: ${dateStr} ${hh}:${mm}`;\n    } else if (minsLeft <= 60 && !notified1h) {\n      action = 'notify_1h';\n      notifyKey = 'notified_1h';\n      pushMessage =\n        `🔔 อีก 1 ชั่วโมงจะถึงกำหนดแล้ว\\n\\n` +\n        `📌 ${task.task_name || '-'}\\n` +\n        `📚 ${task.subject || '-'}\\n` +\n        `🗂️ ${task.task_type || '-'}\\n` +\n        `📅 กำหนด: ${dateStr} ${hh}:${mm}`;\n    }\n  } else {\n    if (minsOverdue >= 60) {\n      action = 'auto_done_1h_overdue';\n      pushMessage =\n        `✅ ระบบปิดงานอัตโนมัติแล้ว\\n\\n` +\n        `📌 ${task.task_name || '-'}\\n` +\n        `📚 ${task.subject || '-'}\\n` +\n        `🗂️ ${task.task_type || '-'}\\n` +\n        `📅 เลยกำหนดมาแล้ว 1 ชั่วโมง (${dateStr} ${hh}:${mm})\\n\\n` +\n        `หากยังไม่เสร็จ สามารถแก้สถานะกลับเป็น pending ได้ครับ`;\n    }\n  }\n\n  if (!action) continue;\n\n  results.push({\n    json: {\n      task_id: task.task_id,\n      user_id: task.user_id,\n      row_number: task.row_number,\n      action,\n      notify_key: notifyKey,\n      push_message: pushMessage,\n      current_notified_1h: task.notified_1h || 'false',\n      current_notified_15m: task.notified_15m || 'false'\n    }\n  });\n}\n\nreturn results;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -5312,
+        14912
+      ],
+      "id": "8a652027-3937-42de-a78f-75feb0c5c146",
+      "name": "Code Check Deadline Hours1",
+      "alwaysOutputData": false,
+      "executeOnce": false,
+      "retryOnFail": false
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1lBLT-m-s8j8RI-BVPFd2rffP9ftf0tQG3t9yrHmPgSU",
+          "mode": "list",
+          "cachedResultName": "Copy of NewCSI403",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1lBLT-m-s8j8RI-BVPFd2rffP9ftf0tQG3t9yrHmPgSU/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 615510512,
+          "mode": "list",
+          "cachedResultName": "tasks",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1lBLT-m-s8j8RI-BVPFd2rffP9ftf0tQG3t9yrHmPgSU/edit#gid=615510512"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "status",
+              "lookupValue": "pending"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -5536,
+        14912
+      ],
+      "id": "1a093f1e-2fb6-4120-ba14-046732d13c59",
+      "name": "GSheet Get Pending Tasks1",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "tEqESgeot8cpqpu7",
+          "name": "Google Sheets account 6"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "minutes",
+              "minutesInterval": 1
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.3,
+      "position": [
+        -5760,
+        14912
+      ],
+      "id": "0669d957-2021-4956-83c0-5817f9b9dc48",
+      "name": "Schedule Deadline Checker1"
+    },
+    {
+      "parameters": {
+        "jsCode": "const raw = $json.choices?.[0]?.message?.content || '';\nconst sessionData = $('Code Merge Session').first().json;\nconst userText = String(sessionData.text || '').trim();\n\nlet parsed;\ntry {\n  const cleaned = raw.replace(/```json/g, '').replace(/```/g, '').trim();\n  parsed = JSON.parse(cleaned);\n} catch (e) {\n  parsed = {\n    intent: 'unknown',\n    process_status: 'complete',\n    task_name: '',\n    new_task_name: '',\n    subject: '',\n    task_type: 'Personal',\n    deadline_date: '',\n    deadline_time: '',\n    has_time: false,\n    new_status: '',\n    status: 'pending',\n    reply_message: 'ขอโทษครับ ระบบขัดข้องชั่วคราว กรุณาลองใหม่อีกครั้ง'\n  };\n}\n\nconst normalize = (s) =>\n  String(s || '')\n    .trim()\n    .toLowerCase()\n    .replace(/\\s+/g, '');\n\nconst extractRelativeDate = (text, nowStr) => {\n  const t = String(text || '').trim();\n  const now = new Date(`${nowStr}T00:00:00+07:00`);\n  if (isNaN(now)) return '';\n\n  const addDays = (d) => {\n    const x = new Date(now);\n    x.setDate(x.getDate() + d);\n    const yyyy = x.getFullYear();\n    const mm = String(x.getMonth() + 1).padStart(2, '0');\n    const dd = String(x.getDate()).padStart(2, '0');\n    return `${yyyy}-${mm}-${dd}`;\n  };\n\n  if (t.includes('พรุ่งนี้')) return addDays(1);\n  if (t.includes('มะรืน')) return addDays(2);\n  if (t.includes('วันนี้')) return addDays(0);\n\n  const mDate = t.match(/วันที่\\s*(\\d{1,2})/);\n  if (mDate) {\n    const day = Number(mDate[1]);\n    let year = now.getFullYear();\n    let month = now.getMonth();\n    let candidate = new Date(year, month, day);\n    if (candidate < now) candidate = new Date(year, month + 1, day);\n    const yyyy = candidate.getFullYear();\n    const mm = String(candidate.getMonth() + 1).padStart(2, '0');\n    const dd = String(candidate.getDate()).padStart(2, '0');\n    return `${yyyy}-${mm}-${dd}`;\n  }\n\n  const weekdays = {\n    'วันอาทิตย์': 0,\n    'วันจันทร์': 1,\n    'วันอังคาร': 2,\n    'วันพุธ': 3,\n    'วันพฤหัส': 4,\n    'วันศุกร์': 5,\n    'วันเสาร์': 6\n  };\n\n  for (const [k, v] of Object.entries(weekdays)) {\n    if (t.includes(k)) {\n      const cur = now.getDay();\n      let delta = (v - cur + 7) % 7;\n      if (delta === 0) delta = 7;\n      return addDays(delta);\n    }\n  }\n\n  return '';\n};\n\nconst extractTime = (text) => {\n  const t = String(text || '').trim().toLowerCase();\n\n  if (/(^|\\s)เที่ยงคืน($|\\s)/.test(t)) return '00:00';\n  if (/(^|\\s)เที่ยง($|\\s)/.test(t)) return '12:00';\n\n  let m = t.match(/(\\d{1,2})[:.](\\d{2})/);\n  if (m) {\n    const hh = String(Number(m[1])).padStart(2, '0');\n    const mm = String(Number(m[2])).padStart(2, '0');\n    return `${hh}:${mm}`;\n  }\n\n  m = t.match(/ตี\\s*(\\d{1,2})(?:\\s*โมง)?/);\n  if (m) return `${String(Number(m[1])).padStart(2, '0')}:00`;\n\n  m = t.match(/บ่าย\\s*(\\d{1,2})/);\n  if (m) return `${String((Number(m[1]) % 12) + 12).padStart(2, '0')}:00`;\n\n  m = t.match(/เย็น\\s*(\\d{1,2})/);\n  if (m) return `${String((Number(m[1]) % 12) + 12).padStart(2, '0')}:00`;\n\n  if (t.includes('ทุ่มครึ่ง')) return '19:30';\n\n  m = t.match(/(\\d{1,2})\\s*โมง(?:\\s*เช้า)?/);\n  if (m) {\n    let hour = Number(m[1]);\n    if (t.includes('บ่าย') || t.includes('เย็น')) {\n      hour = (hour % 12) + 12;\n    }\n    return `${String(hour).padStart(2, '0')}:00`;\n  }\n\n  return '';\n};\n\nconst stripTemporalParts = (text) => {\n  return String(text || '')\n    .replace(/พรุ่งนี้/g, '')\n    .replace(/มะรืน/g, '')\n    .replace(/วันนี้/g, '')\n    .replace(/วันอาทิตย์|วันจันทร์|วันอังคาร|วันพุธ|วันพฤหัส|วันศุกร์|วันเสาร์/g, '')\n    .replace(/วันที่\\s*\\d{1,2}/g, '')\n    .replace(/\\d{1,2}[:.]\\d{2}/g, '')\n    .replace(/ตี\\s*\\d{1,2}(?:\\s*โมง)?/g, '')\n    .replace(/บ่าย\\s*\\d{1,2}/g, '')\n    .replace(/เย็น\\s*\\d{1,2}/g, '')\n    .replace(/\\d{1,2}\\s*โมง(?:\\s*เช้า)?/g, '')\n    .replace(/ทุ่มครึ่ง/g, '')\n    .replace(/\\s+/g, ' ')\n    .trim();\n};\n\nconst inferTaskNameFromText = (text) => {\n  let s = stripTemporalParts(text);\n\n  s = s\n    .replace(/^(คือ|ว่า|ประมาณ|สัก|ตอบ|เอา|ตอน|เวลา)\\s*/g, '')\n    .replace(/^ต้อง\\s*/g, '')\n    .replace(/^มี\\s*/g, '')\n    .replace(/^ไป\\s*/g, 'ไป')\n    .replace(/^แล้ว\\s*/g, '')\n    .replace(/^ก็\\s*/g, '')\n    .trim();\n\n  s = s.replace(/^(แล้ว|ต่อ|กับ)\\s*/g, '').trim();\n\n  return s;\n};\n\nconst extractFollowupSubject = (text, taskName) => {\n  let s = inferTaskNameFromText(text);\n  if (!s) return '';\n  if (taskName && s === taskName) return '';\n  return s;\n};\n\nlet intent = parsed.intent || 'unknown';\nlet processStatus = parsed.process_status || 'complete';\n\nconst hasPendingSession = sessionData.has_pending_session === 'true';\nconst latestTaskName = sessionData.latest_task_name || sessionData.last_task_name || '';\nconst latestSubject = sessionData.latest_subject || '';\nconst latestTaskType = sessionData.latest_task_type || 'Personal';\n\nconst inferredDate = extractRelativeDate(userText, $now.toFormat('yyyy-MM-dd'));\nconst inferredTime = extractTime(userText);\n\nconst isShortTemporalReply =\n  /^(พรุ่งนี้|มะรืน|วันนี้|วันอาทิตย์|วันจันทร์|วันอังคาร|วันพุธ|วันพฤหัส|วันศุกร์|วันเสาร์|บ่าย\\s*\\d+|ตี\\s*\\d+|\\d{1,2}\\s*โมง(?:\\s*เช้า)?|\\d{1,2}[:.]\\d{2}|เย็น\\s*\\d+|ทุ่มครึ่ง)\\s*$/i\n    .test(userText);\n\nconst viewText = userText.toLowerCase();\n\nconst looksLikeDoneCommand =\n  /งานที่เสร็จ|งานเสร็จแล้ว|งานที่ทำเสร็จ|งานที่ done|งาน done|ดูงานเสร็จ|ดูงานที่เสร็จ|ดูงาน done|งานที่ปิดแล้ว/.test(userText);\n\nconst looksLikePendingTodayCommand =\n  /งานค้างวันนี้|งานวันนี้|วันนี้มีงานอะไร|วันนี้มีอะไรบ้าง|เช็คงานวันนี้|ดูงานวันนี้/.test(userText);\n\nconst looksLikeViewCommand =\n  looksLikeDoneCommand ||\n  looksLikePendingTodayCommand ||\n  /มีงาน|งานค้าง|เหลืองาน|มีอะไรบ้าง|ดูงานทั้งหมด|เช็คงานค้าง|ขอดูงาน/.test(userText);\n\nconst looksLikeHelp =\n  /^(วิธีใช้งาน|วิธีใช้|ใช้งานยังไง|ใช้ยังไง|สอนใช้หน่อย|คำสั่งมีอะไรบ้าง|คู่มือ)/.test(userText) ||\n  userText.includes('วิธีใช้งาน') ||\n  userText.includes('วิธีใช้') ||\n  userText.includes('ใช้งานยังไง') ||\n  userText.includes('ใช้ยังไง') ||\n  userText.includes('คำสั่งมีอะไรบ้าง') ||\n  userText.includes('สอนใช้');\n\nconst looksLikeEditCommand =\n  /^(แก้|แก้ไข|เปลี่ยน|เลื่อน)/.test(userText) ||\n  userText.includes('เปลี่ยนเป็น') ||\n  userText.includes('เปลี่ยนวันที่') ||\n  userText.includes('เปลี่ยนเวลา') ||\n  userText.includes('แก้เป็น') ||\n  userText.includes('เลื่อนเป็น');\n\nlet viewMode = 'pending_all';\n\nif (looksLikeViewCommand) {\n  parsed.intent = 'view_tasks';\n  parsed.process_status = 'complete';\n\n  if (looksLikeDoneCommand) {\n    viewMode = 'done_all';\n  } else if (looksLikePendingTodayCommand) {\n    viewMode = 'pending_today';\n  } else {\n    viewMode = 'pending_all';\n  }\n}\n\nif (looksLikeHelp) {\n  parsed.intent = 'help';\n  parsed.process_status = 'complete';\n  parsed.reply_message =\n    '📘 วิธีใช้งานครับ\\n\\n' +\n    '• เพิ่มงาน: \"ไปเล่นสวนสนุกพรุ่งนี้ 4 โมง\"\\n' +\n    '• ดูงานค้างทั้งหมด: \"มีงานอะไรบ้าง\"\\n' +\n    '• ดูงานค้างวันนี้: \"งานค้างวันนี้\"\\n' +\n    '• ดูงานที่เสร็จแล้ว: \"ดูงานที่เสร็จแล้ว\"\\n' +\n    '• แก้งาน: \"แก้ไปรับสุนัขเป็นวันที่ 25\"\\n' +\n    '• ปิดงาน: \"ทำไปรับสุนัขเสร็จแล้ว\"\\n' +\n    '• ลบงาน: \"ลบไปรับสุนัข\"';\n}\n\nif (looksLikeEditCommand) {\n  parsed.intent = 'edit_task';\n  parsed.process_status = 'complete';\n}\n\nif (parsed.intent === 'edit_task' && (!parsed.task_name || String(parsed.task_name).trim() === '')) {\n  const m = userText.match(/^(?:แก้|แก้ไข|เปลี่ยน|เลื่อน)\\s*(.+?)\\s*(?:เป็น|วันที่|เวลา)/);\n  if (m && m[1]) {\n    parsed.task_name = m[1].trim();\n  }\n}\n\nconst strippedText = stripTemporalParts(userText);\nconst startsLikeReply = /^(ตอบ|เอา|ประมาณ|สัก|ตอน|เวลา)/.test(userText);\n\nconst looksLikeFreshTaskWhileSession =\n  hasPendingSession &&\n  !isShortTemporalReply &&\n  !looksLikeEditCommand &&\n  !looksLikeViewCommand &&\n  !looksLikeHelp &&\n  !!strippedText &&\n  strippedText.length >= 6 &&\n  !startsLikeReply;\n\nif (looksLikeFreshTaskWhileSession) {\n  parsed.intent = 'add_task';\n  parsed.task_name = inferTaskNameFromText(userText) || parsed.task_name || '';\n  parsed.subject = '';\n  if (!parsed.deadline_date && inferredDate) parsed.deadline_date = inferredDate;\n  if (!parsed.deadline_time && inferredTime) parsed.deadline_time = inferredTime;\n}\n\nconst hasOnlyTemporalInfo =\n  !parsed.task_name &&\n  !!latestTaskName &&\n  (\n    !!parsed.deadline_date ||\n    !!parsed.deadline_time ||\n    !!inferredDate ||\n    !!inferredTime ||\n    isShortTemporalReply\n  );\n\nif (!hasPendingSession && hasOnlyTemporalInfo && ['unknown', 'add_task'].includes(parsed.intent || intent)) {\n  parsed.intent = 'edit_task';\n  parsed.task_name = latestTaskName;\n  if (!parsed.deadline_date && inferredDate) parsed.deadline_date = inferredDate;\n  if (!parsed.deadline_time && inferredTime) parsed.deadline_time = inferredTime;\n}\n\nintent = parsed.intent || intent;\nprocessStatus = parsed.process_status || processStatus;\n\nlet taskName = parsed.task_name || '';\n\nif (hasPendingSession && !looksLikeFreshTaskWhileSession && !looksLikeEditCommand && !looksLikeViewCommand && !looksLikeHelp) {\n  taskName = sessionData.session_task_name || parsed.task_name || '';\n}\n\nif (!hasPendingSession && intent === 'edit_task' && (!parsed.task_name || String(parsed.task_name).trim() === '')) {\n  taskName = latestTaskName || '';\n}\n\nif (intent === 'add_task' && parsed.task_name && String(parsed.task_name).trim() !== '') {\n  taskName = String(parsed.task_name).trim();\n}\n\nconst newTaskName = parsed.new_task_name || '';\n\nlet subject = parsed.subject || '';\n\nif (hasPendingSession && !looksLikeFreshTaskWhileSession && !looksLikeEditCommand && !looksLikeHelp && !subject) {\n  subject = extractFollowupSubject(userText, taskName) || '';\n}\n\nif (!subject && hasPendingSession && !looksLikeFreshTaskWhileSession && !looksLikeEditCommand && !looksLikeHelp) {\n  subject = sessionData.session_subject || '';\n}\n\nif (!subject && intent === 'edit_task') {\n  subject = latestSubject || '';\n}\n\nconst taskType =\n  (intent === 'edit_task' ? '' : parsed.task_type) ||\n  sessionData.session_task_type ||\n  latestTaskType ||\n  'Personal';\n\nlet deadlineDate = '';\nlet deadlineTime = '';\n\nif (intent === 'add_task') {\n  deadlineDate =\n    parsed.deadline_date ||\n    inferredDate ||\n    (hasPendingSession && !looksLikeFreshTaskWhileSession ? sessionData.session_deadline_date : '') ||\n    '';\n\n  deadlineTime =\n    parsed.deadline_time ||\n    inferredTime ||\n    (hasPendingSession && !looksLikeFreshTaskWhileSession ? sessionData.session_deadline_time : '') ||\n    '';\n} else if (intent === 'edit_task') {\n  deadlineDate = parsed.deadline_date || inferredDate || '';\n  deadlineTime = parsed.deadline_time || inferredTime || '';\n} else {\n  deadlineDate = parsed.deadline_date || inferredDate || '';\n  deadlineTime = parsed.deadline_time || inferredTime || '';\n}\n\nif (intent === 'add_task') {\n  if (taskName && deadlineDate) {\n    processStatus = 'complete';\n  } else {\n    processStatus = 'incomplete';\n  }\n}\n\nlet hasTime = false;\nif (typeof parsed.has_time === 'boolean') {\n  hasTime = parsed.has_time;\n} else if (typeof parsed.has_time === 'string') {\n  hasTime = parsed.has_time === 'true';\n} else {\n  hasTime = !!(deadlineTime && String(deadlineTime).trim() !== '');\n}\n\nlet newStatus = parsed.new_status || '';\nif (!['pending', 'done', 'session', ''].includes(String(newStatus).trim().toLowerCase())) {\n  newStatus = '';\n} else {\n  newStatus = String(newStatus).trim().toLowerCase();\n}\n\nconst rowStatus =\n  (intent === 'add_task' && processStatus === 'incomplete')\n    ? 'session'\n    : 'pending';\n\nlet replyMessage = parsed.reply_message || '';\n\nif (intent === 'add_task' && processStatus === 'incomplete' && !replyMessage) {\n  if (!taskName) {\n    replyMessage = 'งานอะไรครับ?';\n  } else if (!deadlineDate) {\n    replyMessage = 'วันไหนครับ?';\n  }\n}\n\nif (intent === 'add_task' && processStatus === 'complete' && !replyMessage) {\n  replyMessage = hasTime\n    ? `✅ บันทึกงานแล้วครับ!\\n\\n📌 ${taskName}\\n📚 ${subject || '-'}\\n🗂️ ${taskType}\\n📅 ${deadlineDate} เวลา ${deadlineTime}\\n\\nจะแจ้งเตือนก่อน 1 ชม. และ 15 นาทีนะครับ 🔔`\n    : `✅ บันทึกงานแล้วครับ!\\n\\n📌 ${taskName}\\n📚 ${subject || '-'}\\n🗂️ ${taskType}\\n📅 ${deadlineDate}\\n\\nจะแจ้งเตือนก่อน 1 ชม. นะครับ 🔔`;\n}\n\nif (intent === 'complete_task' && !replyMessage) {\n  replyMessage = `กำลังอัปเดตงาน \"${taskName}\" เป็น done ✅`;\n}\n\nif (intent === 'view_tasks' && !replyMessage) {\n  replyMessage =\n    viewMode === 'done_all'\n      ? 'กำลังดึงรายการงานที่เสร็จแล้วให้ครับ ✅'\n      : viewMode === 'pending_today'\n        ? 'กำลังดึงรายการงานค้างวันนี้ให้ครับ 📋'\n        : 'กำลังดึงรายการงานค้างทั้งหมดให้ครับ 📋';\n}\n\nif (intent === 'delete_task' && !replyMessage) {\n  replyMessage = `กำลังลบงาน \"${taskName}\" ให้ครับ...`;\n}\n\nif (intent === 'help' && !replyMessage) {\n  replyMessage =\n    '📘 วิธีใช้งานครับ\\n\\n' +\n    '• เพิ่มงาน: \"ไปเล่นสวนสนุกพรุ่งนี้ 4 โมง\"\\n' +\n    '• ดูงานค้างทั้งหมด: \"มีงานอะไรบ้าง\"\\n' +\n    '• ดูงานค้างวันนี้: \"งานค้างวันนี้\"\\n' +\n    '• ดูงานที่เสร็จแล้ว: \"ดูงานที่เสร็จแล้ว\"\\n' +\n    '• แก้งาน: \"แก้ไปรับสุนัขเป็นวันที่ 25\"\\n' +\n    '• ปิดงาน: \"ทำไปรับสุนัขเสร็จแล้ว\"\\n' +\n    '• ลบงาน: \"ลบไปรับสุนัข\"';\n}\n\nif (intent === 'edit_task' && !replyMessage) {\n  const editParts = [];\n  if (newTaskName) editParts.push(`ชื่อใหม่: ${newTaskName}`);\n  if (deadlineDate) editParts.push(`วันที่ใหม่: ${deadlineDate}`);\n  if (deadlineTime) editParts.push(`เวลาใหม่: ${deadlineTime}`);\n  if (newStatus) editParts.push(`สถานะใหม่: ${newStatus}`);\n\n  replyMessage = editParts.length > 0\n    ? `กำลังแก้ไขงาน \"${taskName}\"\\n${editParts.join('\\n')}`\n    : `กำลังแก้ไขงาน \"${taskName}\" ให้ครับ...`;\n}\n\nif (intent === 'unknown' && !replyMessage) {\n  replyMessage =\n    '❓ ขอโทษครับ ไม่เข้าใจคำสั่งนี้\\n\\n' +\n    'ลองพิมพ์แบบนี้นะครับ:\\n' +\n    '• \"มีแข่งพรุ่งนี้ 10 โมง\"\\n' +\n    '• \"ส่ง Report CSI403 วันที่ 20\"\\n' +\n    '• \"ทำ Assignment เสร็จแล้ว\"\\n' +\n    '• \"เปลี่ยนชื่องาน Report เป็น Final Report\"\\n' +\n    '• \"เปลี่ยนสถานะงาน Report เป็น done\"\\n' +\n    '• \"เลื่อนงาน Report เป็นพรุ่งนี้ 10 โมง\"\\n' +\n    '• \"มีงานอะไรบ้าง\"';\n}\n\nreturn [{\n  json: {\n    intent,\n    process_status: processStatus,\n    user_id: sessionData.userId,\n    replyToken: sessionData.replyToken,\n\n    task_name: taskName,\n    new_task_name: newTaskName,\n\n    subject,\n    task_type: taskType,\n\n    deadline_date: deadlineDate,\n    deadline_time: deadlineTime,\n    has_time: hasTime ? 'true' : 'false',\n\n    new_status: newStatus,\n\n    notified_1h: 'false',\n    notified_15m: 'false',\n    status: rowStatus,\n\n    reply_message: replyMessage,\n    view_mode: viewMode,\n    created_at: new Date().toISOString()\n  }\n}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -4640,
+        14336
+      ],
+      "id": "3d4f1150-dc3b-4b07-b78d-2f19126874b0",
+      "name": "Code Parse"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Webhook1": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GSheet Add Task1": {
+      "main": [
+        [
+          {
+            "node": "Code Merge Reply",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "GSheet Read Session",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch Intent": {
+      "main": [
+        [
+          {
+            "node": "GSheet Save Session",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "GSheet Check Conflict1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "GSheet Find Task to Complete",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "GSheet Get Tasks",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "GSheet Find Task to Delete1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "GSheet Find Task to Edit1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Code Unknown Intent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GSheet Find Task to Complete": {
+      "main": [
+        [
+          {
+            "node": "Code Prep Complete",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code Prep Complete": {
+      "main": [
+        [
+          {
+            "node": "Switch Complete Found1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GSheet Update Status Done": {
+      "main": [
+        [
+          {
+            "node": "Code Merge Reply",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GSheet Get Tasks": {
+      "main": [
+        [
+          {
+            "node": "Code Format Task List",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code Format Task List": {
+      "main": [
+        [
+          {
+            "node": "Code Merge Reply",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code Unknown Intent": {
+      "main": [
+        [
+          {
+            "node": "Code Merge Reply",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code Merge Reply": {
+      "main": [
+        [
+          {
+            "node": "LINE Reply API4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request1": {
+      "main": [
+        [
+          {
+            "node": "Code Parse",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GSheet Read Session": {
+      "main": [
+        [
+          {
+            "node": "Code Merge Session",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code Merge Session": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GSheet Save Session": {
+      "main": [
+        [
+          {
+            "node": "Code Merge Reply",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GSheet Check Conflict1": {
+      "main": [
+        [
+          {
+            "node": "Code Detect Conflict1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code Detect Conflict1": {
+      "main": [
+        [
+          {
+            "node": "Switch Conflict1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch Conflict1": {
+      "main": [
+        [
+          {
+            "node": "GSheet Add Task1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Code Merge Reply",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GSheet Find Task to Delete1": {
+      "main": [
+        [
+          {
+            "node": "Code Prep Delete1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code Prep Delete1": {
+      "main": [
+        [
+          {
+            "node": "GSheet Delete Task1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Code Merge Reply",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GSheet Delete Task1": {
+      "main": [
+        [
+          {
+            "node": "Code Merge Reply",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GSheet Find Task to Edit1": {
+      "main": [
+        [
+          {
+            "node": "Code Prep Edit1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code Prep Edit1": {
+      "main": [
+        [
+          {
+            "node": "Switch Edit Found1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GSheet Update Task Edit1": {
+      "main": [
+        [
+          {
+            "node": "Code Merge Reply",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch Complete Found1": {
+      "main": [
+        [
+          {
+            "node": "GSheet Update Status Done",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Code Merge Reply",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch Edit Found1": {
+      "main": [
+        [
+          {
+            "node": "GSheet Update Task Edit1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Code Merge Reply",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Morning Brief1": {
+      "main": [
+        [
+          {
+            "node": "GSheet Get All Pending Morning1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GSheet Get All Pending Morning1": {
+      "main": [
+        [
+          {
+            "node": "Code Build Morning Brief1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code Build Morning Brief1": {
+      "main": [
+        [
+          {
+            "node": "LINE Push Morning Brief1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code Merge Auto Done1": {
+      "main": [
+        [
+          {
+            "node": "LINE Push Auto Done1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GSheet Auto Done Overdue1": {
+      "main": [
+        [
+          {
+            "node": "Code Merge Auto Done1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch Deadline Action1": {
+      "main": [
+        [
+          {
+            "node": "GSheet Update Notified Flags1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "LINE Push Deadline Notify1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "GSheet Update Notified Flags1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "LINE Push Deadline Notify1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "GSheet Auto Done Overdue1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code Check Deadline Hours1": {
+      "main": [
+        [
+          {
+            "node": "Switch Deadline Action1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GSheet Get Pending Tasks1": {
+      "main": [
+        [
+          {
+            "node": "Code Check Deadline Hours1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Deadline Checker1": {
+      "main": [
+        [
+          {
+            "node": "GSheet Get Pending Tasks1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code Parse": {
+      "main": [
+        [
+          {
+            "node": "Switch Intent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "versionId": "fe208846-e823-4750-9358-a3086d3c65a0",
+  "meta": {
+    "instanceId": "c6ea936472e83d981fde2e1f0a8b6d61fe0dc6b54f3a7d1b0fae6f08b4334cee"
+  },
+  "id": "UaG6n0WRjfxSvHlz",
+  "tags": []
+}
