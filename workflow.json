@@ -756,7 +756,7 @@
           "parameters": [
             {
               "name": "Authorization",
-              "value": "Bearer sk-fa-4aec7bd976fc7a6c8ef8afaf5bbb3521bebdceca8ca5551c"
+              "value": "Bearer "
             },
             {
               "name": "Content-Type",
